@@ -27,4 +27,4 @@ def acc_view(request):
 
 def logout_view(request):
     logout(request)
-    return HttpResponseRedirect('auth/login/')
+    return HttpResponseRedirect('/auth/login')
