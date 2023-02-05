@@ -1,10 +1,10 @@
 from django.urls import path
-
-from apps.lms.views import hello, abc
+from apps.lms.views import StudentListView, StudentCreateView, StudentUpdateView
 
 app_name = 'lms'
 
 urlpatterns = [
-    path('', hello),
-    path('abc/', abc),
+    path('', StudentListView.as_view(), name='student-list'),
+    path('student/', StudentCreateView.as_view(), name='student-create'),
+    path('student/<str:pk>/', StudentUpdateView.as_view(), name='student-update')
 ]

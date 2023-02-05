@@ -1,30 +1,34 @@
 from django.contrib.auth import get_user_model, login, logout
-from django.contrib.auth.decorators import login_required
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render
-
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.http import HttpResponseRedirect
+from django.urls import reverse_lazy
+from django.views.generic import TemplateView, View, FormView, CreateView
+from apps.authentication.forms import RegistrationForm, LoginForm
 
 User = get_user_model()
 
 
-def login_view(request):
-    if request.user.is_authenticated:
-        return HttpResponseRedirect('/auth/account')
-    if request.method == 'POST':
-        user = User.objects.get(email=request.POST['email'])
+class LoginView(FormView):
+    form_class = LoginForm
+    template_name = 'authentication/login.html'
+    success_url = reverse_lazy('auth:account')
 
-        if user.check_password(request.POST['password']):
-            login(request, user)
-            return HttpResponseRedirect(request.GET.get('next', '/'))
-
-    return HttpResponse(render(request, 'authentication/login.html'))
+    def form_valid(self, form):
+        login(self.request, User.objects.get(email=form.cleaned_data['email']))
+        return super().form_valid(form)
 
 
-@login_required
-def acc_view(request):
-    return HttpResponse(render(request, 'authentication/account.html'))
+class RegisterView(CreateView):
+    form_class = RegistrationForm
+    template_name = 'authentication/register.html'
+    success_url = reverse_lazy('auth:login')
 
 
-def logout_view(request):
-    logout(request)
-    return HttpResponseRedirect('/auth/login')
+class AccountView(LoginRequiredMixin, TemplateView):
+    template_name = 'authentication/account.html'
+
+
+class LogoutView(LoginRequiredMixin, View):
+    def get(self, request):
+        logout(request)
+        return HttpResponseRedirect('/auth/login')

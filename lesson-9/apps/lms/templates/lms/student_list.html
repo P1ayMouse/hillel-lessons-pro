@@ -1,0 +1,6 @@
+<ul>
+    {% for student in object_list  %}
+    <li><a href="{% url 'lms:student-update' pk=student.id %}">{{ student.name }} {{ student.birth_date }}</a></li>
+    {% endfor %}
+    <li><a href="{% url 'lms:student-create' %}">+ add</a></li>
+</ul>
