@@ -1,12 +1,14 @@
-<html>
-<title>Sign in</title>
-<body>
-    <form method="POST">
-        {% csrf_token %}
+{% extends "base.html" %}
+{% load bootstrap %}
 
-        {{ form.as_p }}
+{% block title %} Log In {% endblock %}
 
-        <input type="submit"> <br/>
-    </form>
-</body>
-</html>
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+
+    {{ form|bootstrap }}
+
+    <input type="submit"> <br/>
+</form>
+{% endblock %}

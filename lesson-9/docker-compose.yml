@@ -21,7 +21,7 @@ services:
       - .:/src
     environment:
       DJANGO_SETTINGS_MODULE: "settings.docker"
-      POSTGRES_PASSWOED: "123"
+      POSTGRES_PASSWORD: "123"
 
 volumes:
   pgdata:

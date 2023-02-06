@@ -1,5 +1,13 @@
-<form method="post">
-      {% csrf_token %}
-      {{ form.as_p }}
-      <input type="submit" />
-</form>
+{% extends "base.html" %}
+{% load bootstrap %}
+
+{% block content %}
+      {{ form.media }}
+      <div class="row">
+                  <form method="post" class="col-6">
+                        {% csrf_token %}
+                        {{ form|bootstrap }}
+                        <input type="submit" />
+                  </form>
+      </div>
+{% endblock %}

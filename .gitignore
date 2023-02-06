@@ -154,7 +154,7 @@ yarn-error.log
 .idea
 .vscode
 
-static
+static/
 .env
 .DS_Store
 xmlrunner

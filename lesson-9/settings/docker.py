@@ -14,3 +14,6 @@ DATABASES = {
         'ATOMIC_REQUESTS': True
     }
 }
+
+
+STATIC_ROOT = '/static'
