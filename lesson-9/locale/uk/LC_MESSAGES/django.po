@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 22:01+0000\n"
+"POT-Creation-Date: 2023-02-07 20:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,19 +42,21 @@ msgid "Student list"
 msgstr "Список студентів"
 
 #: apps/lms/templates/lms/student_list.html:12
-#, python-format
+#, fuzzy, python-format
+#| msgid "    Hi! this is a text with <b>Bold</b> %(request.user)s\n"
 msgid ""
+"\n"
 "    Hi! this is a text with <b>Bold</b> %(request.user)s\n"
 msgstr "А тут у нас було багато тексту"
 
-#: settings/base.py:121
+#: settings/base.py:122
 msgid "English"
 msgstr "Англійська"
 
-#: settings/base.py:122
+#: settings/base.py:123
 msgid "Ukrainian"
 msgstr "Українська"
 
-#: settings/base.py:123
+#: settings/base.py:124
 msgid "Spanish"
 msgstr "Іспанська"

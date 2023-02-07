@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-02-06 22:01+0000\n"
+"POT-Creation-Date: 2023-02-07 20:32+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
 #: apps/authentication/forms.py:9
 msgid "Email Adress"
 msgstr ""
@@ -44,17 +45,18 @@ msgstr ""
 #: apps/lms/templates/lms/student_list.html:12
 #, python-format
 msgid ""
+"\n"
 "    Hi! this is a text with <b>Bold</b> %(request.user)s\n"
 msgstr ""
 
-#: settings/base.py:121
+#: settings/base.py:122
 msgid "English"
 msgstr ""
 
-#: settings/base.py:122
+#: settings/base.py:123
 msgid "Ukrainian"
 msgstr ""
 
-#: settings/base.py:123
+#: settings/base.py:124
 msgid "Spanish"
 msgstr ""
