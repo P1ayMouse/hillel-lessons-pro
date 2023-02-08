@@ -121,7 +121,6 @@ LANGUAGE_CODE = 'uk'
 LANGUAGES = (
     ('en', _('English')),
     ('uk', _('Ukrainian')),
-    ('es', _('Spanish')),
 )
 
 
