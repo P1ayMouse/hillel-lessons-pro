@@ -1,0 +1,43 @@
+output-format: pylint
+
+strictness: veryhigh
+test-warnings: true
+doc-warnings: false
+
+ignore-paths:
+  - static
+  - docs
+  - client
+  - config
+  - locale
+  - staticfiles
+  - settings
+  - scripts
+  - deploy
+  - migrations
+  - config
+
+ignore-patterns:
+  - .*migrations.*
+  - .*tests.*
+  - config/*
+
+uses:
+  - django
+  - celery
+
+pycodestyle:
+  full: true
+  options:
+    max-line-length: 255
+
+pylint:
+  options:
+    good-names: "i,j,k,ex,Run,_,pk,x,y,f,q,ip,e,w1,w32,ph"
+    django-settings-module: settings.base
+  disable:
+    - line-too-long  # Already checked by pep8
+    - too-few-public-methods
+    - too-many-ancestors
+    - no-self-use
+    - cyclic-import
