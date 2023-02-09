@@ -26,9 +26,11 @@ services:
     image: nginx:1.23.3
     volumes:
       - static:/static:ro
-      - ./config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
+      - ${NGINX_CONFIG:-./config/nginx.conf}:/etc/nginx/conf.d/default.conf:ro
+      - ./config/certs:/etc/ssl:ro
     ports:
       - "${NGINX_PORT}:80"
+      - "${NGINX_SSL_PORT}:443"
 
 volumes:
   pgdata:

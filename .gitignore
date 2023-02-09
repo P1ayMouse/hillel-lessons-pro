@@ -155,6 +155,7 @@ yarn-error.log
 .vscode
 
 static/
+certs
 .env
 .DS_Store
 xmlrunner
