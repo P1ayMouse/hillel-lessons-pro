@@ -6,7 +6,6 @@ from invoke import task
 @task
 def runit(ctx):
     ctx.run('./manage.py collectstatic --noinput')
-    ctx.run('./manage.py makemessages --all')
     ctx.run('./manage.py compilemessages')
     ctx.run('./manage.py migrate')
 
