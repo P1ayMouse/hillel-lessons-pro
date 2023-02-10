@@ -2,15 +2,16 @@ version: 2.1
 
 # Define the jobs we want to run for this project
 jobs:
-  build:
+  prospector:
     docker:
       - image: circleci/python:3.9
     steps:
       - checkout
-      - run: echo "build"
+      - pip install -r requirements-dev.txt
+      - run: prospector
 
 # Orchestrate our job run sequence
 workflows:
-  build_and_test:
+  check_code:
     jobs:
-      - build
+      - prospector
