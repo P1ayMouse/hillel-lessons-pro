@@ -6,8 +6,9 @@ jobs:
     docker:
       - image: circleci/python:3.9
     steps:
-      - run: cd ./lesson-9
       - checkout
+      - run: ls
+      - run: cd lesson-9
       - run: pip install -r requirements-dev.txt
       - run: prospector
 
