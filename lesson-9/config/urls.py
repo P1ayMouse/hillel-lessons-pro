@@ -15,7 +15,6 @@ Including another URLconf
 """
 from django.conf.urls.i18n import i18n_patterns
 from django.contrib import admin
-from django.http import HttpResponse
 from django.urls import path, include
 
 urlpatterns = [
