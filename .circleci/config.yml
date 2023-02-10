@@ -13,7 +13,7 @@ jobs:
       - save_cache:
           key: python-dev-requirements
           paths:
-            - /usr/local/lib/python3.10/site-packages
+            - /usr/local/lib/python3.9/site-packages
       - run: prospector lesson-9/apps
 
 # Orchestrate our job run sequence
