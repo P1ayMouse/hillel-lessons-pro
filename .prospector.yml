@@ -16,7 +16,6 @@ ignore-paths:
   - deploy
   - migrations
   - config
-  - lesson-10
 
 ignore-patterns:
   - .*migrations.*

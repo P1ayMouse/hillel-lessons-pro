@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - run: pip install -r lesson-9/requirements-dev.txt
-      - run: prospector
+      - run: prospector lesson-9/apps
 
 # Orchestrate our job run sequence
 workflows:
