@@ -4,6 +4,7 @@ from time import sleep
 A = {}
 m = Lock()
 
+
 class RWLock:
     def __init__(self):
         self.lock = Lock()
@@ -29,6 +30,7 @@ class RWLock:
         self.lock.acquire()
         self.readers -= 1
         self.lock.release()
+
 
 class MyThread(Thread):
     def __init__(self, new_a):

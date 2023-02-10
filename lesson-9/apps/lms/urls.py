@@ -1,7 +1,6 @@
 from django.urls import path
 
-from apps.lms.views import (StudentCreateView, StudentListView,
-                            StudentUpdateView)
+from apps.lms.views import (StudentCreateView, StudentListView, StudentUpdateView)
 
 app_name = 'lms'
 
