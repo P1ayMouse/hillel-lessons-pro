@@ -2,8 +2,9 @@ from django.contrib.auth import get_user_model, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect
 from django.urls import reverse_lazy
-from django.views.generic import TemplateView, View, FormView, CreateView
-from apps.authentication.forms import RegistrationForm, LoginForm
+from django.views.generic import CreateView, FormView, TemplateView, View
+
+from apps.authentication.forms import LoginForm, RegistrationForm
 
 User = get_user_model()
 

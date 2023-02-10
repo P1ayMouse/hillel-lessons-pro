@@ -2,3 +2,4 @@
 
 prospector==1.8.4
 black==23.1.0
+isort==5.12.0
