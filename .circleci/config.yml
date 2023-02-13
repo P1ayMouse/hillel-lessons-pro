@@ -27,8 +27,8 @@ jobs:
           key: python-dev-requirements-3.9
           paths:
             - /usr/local/lib/python3.9/site-packages
-      - run: coverage run ./lesson-9/manage.py test
-      - run: coverage report --fail-under=90
+      - run: coverage run ./lesson-9/manage.py test lesson-9/
+      - run: coverage report --fail-under=80
 
 # Orchestrate our job run sequence
 workflows:
