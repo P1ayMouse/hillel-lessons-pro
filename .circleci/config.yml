@@ -11,7 +11,7 @@ jobs:
           key: python-dev-requirements
       - run: pip install -r lesson-9/requirements-dev.txt
       - save_cache:
-          key: python-dev-requirements
+          key: python-dev-requirements-3.9
           paths:
             - /usr/local/lib/python3.10/site-packages
       - run: prospector lesson-9/apps
@@ -24,10 +24,10 @@ jobs:
           key: python-dev-requirements
       - run: pip install -r lesson-9/requirements-dev.txt
       - save_cache:
-          key: python-dev-requirements
+          key: python-dev-requirements-3.9
           paths:
             - /usr/local/lib/python3.10/site-packages
-      - run: coverage run ./manage.py test
+      - run: coverage run ./lesson-9/manage.py test
       - run: coverage report -m
 
 # Orchestrate our job run sequence
