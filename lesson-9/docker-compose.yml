@@ -40,7 +40,7 @@ services:
 
 
 networks:
-  defaul:
+  default:
   nginx-proxy:
     name: nginx-proxy
 

@@ -15,6 +15,20 @@ jobs:
           paths:
             - /usr/local/lib/python3.10/site-packages
       - run: prospector lesson-9/apps
+  tests:
+    docker:
+      - image: circleci/python:3.9
+    steps:
+      - checkout
+      - restore_cache:
+          key: python-dev-requirements
+      - run: pip install -r lesson-9/requirements-dev.txt
+      - save_cache:
+          key: python-dev-requirements
+          paths:
+            - /usr/local/lib/python3.10/site-packages
+      - run: coverage run ./lesson-9/manage.py tests
+      - run coverage report -m
 
 # Orchestrate our job run sequence
 workflows:
