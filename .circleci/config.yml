@@ -29,6 +29,7 @@ jobs:
             - /usr/local/lib/python3.9/site-packages
       - run: coverage run ./lesson-9/manage.py test lesson-9/
       - run: coverage report --fail-under=80
+
   deploy_dev:
     docker:
       - image: circleci/python:3.9
@@ -45,13 +46,12 @@ jobs:
 
 # Orchestrate our job run sequence
 workflows:
-  check_code:
+  check_and_deploy:
     jobs:
       - prospector
       - tests
-  deploy_dev:
-    jobs:
       - deploy_dev:
+          requires: ['prospector', 'tests']
           filters:
             branches:
               only:
