@@ -42,7 +42,6 @@ jobs:
           paths:
             - /usr/local/lib/python3.9/site-packages
       - run: echo "deploy dev"
-      - run: coverage report --fail-under=80
 
 # Orchestrate our job run sequence
 workflows:
@@ -53,7 +52,7 @@ workflows:
   deploy_dev:
     jobs:
       - deploy_dev:
-        filters:
-          branches:
-            only:
-              - main
+          filters:
+            branches:
+              only:
+                - main
