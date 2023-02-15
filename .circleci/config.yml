@@ -8,7 +8,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: python-dev-requirements-3.9
+          key: python-dev-requirements
       - run: pip install -r lesson-9/requirements-dev.txt
       - save_cache:
           key: python-dev-requirements-3.9
@@ -22,7 +22,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: python-dev-requirements-3.9
+          key: python-dev-requirements
       - run: pip install -r lesson-9/requirements-dev.txt
       - save_cache:
           key: python-dev-requirements-3.9
@@ -36,14 +36,8 @@ jobs:
       - image: circleci/python:3.9
     steps:
       - checkout
-      - restore_cache:
-          key: python-dev-requirements-3.9
-      - run: pip install -r lesson-9/requirements-dev.txt
-      - save_cache:
-          key: python-dev-requirements-3.9
-          paths:
-            - /usr/local/lib/python3.9/site-packages
-      - run: echo "deploy dev"
+      - run: pip install boto3
+      - run: python lesson-9/deploy.py
 
 # Orchestrate our job run sequence
 workflows:
