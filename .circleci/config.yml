@@ -8,20 +8,21 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: python-dev-requirements
+          key: python-dev-requirements-3.9
       - run: pip install -r lesson-9/requirements-dev.txt
       - save_cache:
           key: python-dev-requirements-3.9
           paths:
             - /usr/local/lib/python3.9/site-packages
       - run: prospector lesson-9/apps
+
   tests:
     docker:
       - image: circleci/python:3.9
     steps:
       - checkout
       - restore_cache:
-          key: python-dev-requirements
+          key: python-dev-requirements-3.9
       - run: pip install -r lesson-9/requirements-dev.txt
       - save_cache:
           key: python-dev-requirements-3.9
@@ -36,7 +37,7 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-          key: python-dev-requirements
+          key: python-dev-requirements-3.9
       - run: pip install -r lesson-9/requirements-dev.txt
       - save_cache:
           key: python-dev-requirements-3.9
