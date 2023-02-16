@@ -36,7 +36,12 @@ jobs:
       - image: playmouse/lesson-9-deploy
     steps:
       - checkout
-      - run: pip install boto3
+      - run: pip install boto3 pexpect
+
+      - add_ssh_keys:
+          fingerprints:
+            - "f8:a6:7b:d3:57:e4:55:d2:b9:3a:e2:0f:10:d6:2b:5c"
+            -
       - run: python lesson-9/deploy.py
 
 # Orchestrate our job run sequence
