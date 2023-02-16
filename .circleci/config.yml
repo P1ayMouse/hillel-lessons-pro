@@ -4,7 +4,7 @@ version: 2.1
 jobs:
   prospector:
     docker:
-      - image: circleci/python:3.9
+      - image: playmouse/lesson-9-deploy
     steps:
       - checkout
       - restore_cache:
@@ -18,7 +18,7 @@ jobs:
 
   tests:
     docker:
-      - image: circleci/python:3.9
+      - image: playmouse/lesson-9-deploy
     steps:
       - checkout
       - restore_cache:
@@ -33,7 +33,7 @@ jobs:
 
   deploy_dev:
     docker:
-      - image: circleci/python:3.9
+      - image: playmouse/lesson-9-deploy
     steps:
       - checkout
       - run: pip install boto3
