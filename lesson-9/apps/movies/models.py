@@ -21,8 +21,8 @@ class Movie(models.Model):
 class Person(models.Model):
     imdb_id = models.CharField(_('Id of IMDB'), max_length=80)
     name = models.CharField(_('Name'), max_length=255)
-    birth_year = models.DateField(_('Birth year'))
-    death_year = models.DateField(_('Death year'))
+    birth_year = models.DateField(_('Birth year'), null=True)
+    death_year = models.DateField(_('Death year'), null=True)
 
 
 class PersonMovie(models.Model):
