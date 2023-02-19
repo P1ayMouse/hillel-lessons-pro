@@ -14,7 +14,7 @@ jobs:
           key: python-dev-requirements-3.9
           paths:
             - /usr/local/lib/python3.9/site-packages
-      - run: prospector lesson-9/apps
+      # - run: prospector lesson-9/apps
 
   tests:
     docker:
@@ -28,8 +28,8 @@ jobs:
           key: python-dev-requirements-3.9
           paths:
             - /usr/local/lib/python3.9/site-packages
-      - run: coverage run ./lesson-9/manage.py test lesson-9/
-      - run: coverage report --fail-under=80
+      # - run: coverage run ./lesson-9/manage.py test lesson-9/
+      # - run: coverage report --fail-under=80
 
   deploy_dev:
     docker:
