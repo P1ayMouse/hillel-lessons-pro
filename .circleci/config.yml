@@ -51,7 +51,9 @@ workflows:
       - prospector
       - tests
       - deploy_dev:
+          requires: ['prospector', 'tests']
           filters:
             branches:
               only:
                 - main
+                - dz10_django_models
