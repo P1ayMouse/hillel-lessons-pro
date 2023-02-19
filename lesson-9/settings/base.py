@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'bootstrap_datepicker_plus',
 
     'apps.lms',
-    'apps.authentication'
+    'apps.authentication',
+    'apps.movies',
 ]
 
 MIDDLEWARE = [
