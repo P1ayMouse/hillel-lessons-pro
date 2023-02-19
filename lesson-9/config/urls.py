@@ -18,11 +18,9 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
-    path('i18n/', include('django.conf.urls.i18n'))
-]
-
-urlpatterns += i18n_patterns(
-    path('', include('apps.lms.urls', namespace='lms')),
+    path('i18n/', include('django.conf.urls.i18n')),
+    path('', include('apps.movies.urls', namespace='movies')),
+    path('lms/', include('apps.lms.urls', namespace='lms')),
     path('admin/', admin.site.urls),
     path('auth/', include('apps.authentication.urls', namespace='auth'))
-)
+]
