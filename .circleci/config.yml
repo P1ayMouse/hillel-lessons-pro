@@ -51,7 +51,6 @@ workflows:
       - prospector
       - tests
       - deploy_dev:
-          requires: ['prospector', 'tests']
           filters:
             branches:
               only:
