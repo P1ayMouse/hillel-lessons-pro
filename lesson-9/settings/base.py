@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 
     'bootstrapform',
     'bootstrap_datepicker_plus',
+    'anymail',
 
     'apps.lms',
     'apps.authentication',
@@ -92,7 +93,7 @@ DATABASES = {
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
-LOGIN_URL = 'uk/auth/login/'
+LOGIN_URL = '/auth/login/'
 AUTH_USER_MODEL = 'authentication.User'
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -145,3 +146,9 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'staticfiles')]
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL', 'admin@hillel.ryzhenko.pp.ua')
+
+SITE_URL = os.getenv('SITE_URL', 'http://localhost:8000')

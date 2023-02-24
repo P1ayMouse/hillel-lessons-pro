@@ -1,3 +1,5 @@
+import uuid
+
 from django.contrib.auth.models import AbstractUser, BaseUserManager
 from django.db import models
 from django.utils.translation import gettext_lazy as _
@@ -43,3 +45,14 @@ class User(AbstractUser):
 
     username = None
     email = models.EmailField(_('email address'), null=False, unique=True)
+
+
+def generate_unique_token():
+    return str(uuid.uuid4().hex)
+
+
+class UserToken(models.Model):
+    user = models.ForeignKey('User', on_delete=models.CASCADE, related_name='user_tokens')
+    token = models.CharField('Token', max_length=255, default=generate_unique_token, unique=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    used_at = models.DateTimeField(default=None, null=True)
