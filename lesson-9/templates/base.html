@@ -11,9 +11,17 @@
     <script src="https://code.jquery.com/jquery-3.6.1.slim.min.js"> </script>
 </head>
 <body>
+
     {% block header %}
         {% include "navbar.html" %}
     {% endblock %}
+
+    {% for message in messages %}
+        <div class="alert alert-primary" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+
     {% block content %}
     {% endblock %}
 

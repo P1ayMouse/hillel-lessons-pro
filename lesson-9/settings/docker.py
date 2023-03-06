@@ -1,5 +1,3 @@
-import os
-
 from .base import * # noqa
 
 # Database
@@ -30,7 +28,20 @@ EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER', 'test')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', 'test')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', 'False').lower() in ('1', 'true')
 
+
 ANYMAIL = {
     "MAILGUN_API_KEY": os.getenv('EMAIL_HOST_PASSWORD', ''),
     "MAILGUN_API_URL": "https://api.eu.mailgun.net/v3",
+}
+
+SITE_URL = os.getenv('SITE_URL', 'http://localhost:8000')
+
+
+CELERY_BROKER_URL = 'redis://redis:6379/0'
+
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.redis.RedisCache',
+        'LOCATION': 'redis://redis:6379',
+    }
 }

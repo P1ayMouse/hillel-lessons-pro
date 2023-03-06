@@ -5,11 +5,8 @@
     <h1>{% trans "Student list" %}</h1>
     <ul>
         {% for student in object_list  %}
-        <li><a href="{% url 'lms:student-update' pk=student.id %}">{{ student.name | add_5 }} {{ student.birth_date }}</a></li>
+        <li><a href="{% url 'lms:student-update' pk=student.id %}">{{ student.name }}. {{ student.birth_date }}</a></li>
         {% endfor %}
         <li><a href="{% url 'lms:student-create' %}">+ add</a></li>
     </ul>
-{% blocktrans %}
-    Hi! this is a text with <b>Bold</b> {{ request.user }}
-{% endblocktrans %}
 {% endblock %}

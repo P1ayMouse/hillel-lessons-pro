@@ -1,7 +1,14 @@
-Django==4.1.6
+Django==4.1.7
 psycopg2-binary==2.9.5
 django-bootstrap-form==3.4
 django-bootstrap-datepicker-plus==5.0.3
 uwsgi==2.0.21
 invoke==2.0.0
 django-anymail[mailgun]==9.0
+celery==5.2.7
+redis==4.5.1
+django-celery-beat==2.4.0
+djangorestframework==3.14.0
+drf-yasg==1.21.5
+djangorestframework-simplejwt==5.2.2
+social-auth-app-django==5.0.0

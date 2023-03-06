@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import get_user_model, login, logout
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import HttpResponseRedirect, HttpResponseNotFound
@@ -26,6 +27,10 @@ class RegisterView(CreateView):
     form_class = RegistrationForm
     template_name = 'authentication/register.html'
     success_url = reverse_lazy('auth:login')
+
+    def form_valid(self, form):
+        messages.success(self.request, 'Your account was created. Please validate it')
+        return super().form_valid(form)
 
 
 class AccountView(LoginRequiredMixin, TemplateView):
