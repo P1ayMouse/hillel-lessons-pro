@@ -40,7 +40,7 @@ jobs:
 
       - add_ssh_keys:
           fingerprints:
-            - "f8:a6:7b:d3:57:e4:55:d2:b9:3a:e2:0f:10:d6:2b:5c"
+            - "8e:f8:2e:2f:50:02:2e:f1:15:d3:b0:08:a6:08:69:2a"
 
       - run: python lesson-9/deploy.py
 
@@ -56,4 +56,3 @@ workflows:
             branches:
               only:
                 - main
-                - dz10_django_models
