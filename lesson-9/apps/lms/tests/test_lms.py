@@ -43,6 +43,31 @@ class StudentFactory(factory.django.DjangoModelFactory):
     birth_date = factory.Faker('date')
 
 
+class TeacherFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = 'lms.Teacher'
+
+    name = factory.Faker('name')
+    birth_date = factory.Faker('date')
+
+
+class GroupFactory(factory.django.DjangoModelFactory):
+    class Meta:
+        model = 'lms.Group'
+
+    name = factory.Faker('job')
+    teacher = TeacherFactory()
+
+    @factory.post_generation
+    def students(self, create, extracted, **kwargs):
+        if not create:
+            return
+
+        if extracted:
+            for student in extracted:
+                self.students.add(student)
+
+
 class LMSTestCase(TestCase):
     def setUp(self):
         self.s1 = StudentFactory()

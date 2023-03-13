@@ -14,6 +14,7 @@ from .models import Student
 
 
 class StudentListView(ListView, LoginRequiredMixin):
+    paginate_by = 10
     model = Student
 
     def get(self, request, *args, **kwargs):

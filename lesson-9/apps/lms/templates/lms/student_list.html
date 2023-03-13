@@ -1,12 +1,43 @@
 {% extends "base.html" %}
-{% load lms %}
 {% load i18n %}
 {% block content %}
-    <h1>{% trans "Student list" %}</h1>
-    <ul>
-        {% for student in object_list  %}
-        <li><a href="{% url 'lms:student-update' pk=student.id %}">{{ student.name }}. {{ student.birth_date }}</a></li>
-        {% endfor %}
-        <li><a href="{% url 'lms:student-create' %}">+ add</a></li>
-    </ul>
+<h1>{% trans "Student list" %}</h1>
+<table class="table">
+<thead>
+    <th>{% trans "ID" %}</th>
+    <th>{% trans "Name" %}</th>
+    <th>{% trans "Birth date" %}</th>
+    <th>{% trans "Groups count" %}</th>
+    <th>{% trans "Actions" %}</th>
+</thead>
+<tbody>
+    {% for student in object_list  %}
+    <tr>
+        <td>{{ student.id }}</td>
+        <td>{{ student.name }}</td>
+        <td>{{ student.birth_date }}</td>
+        <td>{{ student.groups.count }}</td>
+        <td><a href="{% url 'lms:student-update' pk=student.id %}">{% trans "Edit" %}</a></td>
+    </tr>
+    {% endfor %}
+</tbody>
+</table>
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+    <li><a href="{% url 'lms:student-create' %}">+ add</a></li>
 {% endblock %}

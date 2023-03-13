@@ -27,6 +27,14 @@ services:
 
     command: /bin/bash -c "pip install -r requirements.txt && invoke runit"
 
+  client:
+    image: node:16.14.2
+    volumes:
+      - ./client:/src
+    command: /bin/bash -c "cd /src/; npm i; npm run dev"
+    ports:
+      - 3000:3000
+
   celery-worker:
     build: .
     image: lesson-9-web
@@ -65,6 +73,7 @@ services:
       - ./config/nginx.conf:/etc/nginx/conf.d/default.conf:ro
     depends_on:
       - web
+      - client
     ports:
       - "8000:80"
     environment:

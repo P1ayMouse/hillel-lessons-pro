@@ -18,9 +18,11 @@ class TeacherSerializer(serializers.ModelSerializer):
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
-        fields = ['id', 'name', 'students_count']
+        fields = ['id', 'name', 'students_count', 'teacher', 'students']
 
     students_count = serializers.SerializerMethodField()
+    teacher = TeacherSerializer()
+    students = StudentSerializer(many=True)
 
     def get_students_count(self, group):
         return group.students.count()
