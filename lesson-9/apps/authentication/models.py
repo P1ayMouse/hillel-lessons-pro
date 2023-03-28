@@ -43,7 +43,7 @@ class User(AbstractUser):
 
     objects = UserManager()
 
-    username = None
+    username = models.CharField(_('user name'), max_length=255, null=True, unique=True)
     email = models.EmailField(_('email address'), null=False, unique=True)
 
 

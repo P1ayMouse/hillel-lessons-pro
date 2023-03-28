@@ -41,7 +41,11 @@ export default {
 <template>
   Search: <input v-model="search" @change="loadStudents()"/>
   <div v-if="!studentsLoaded">
-    Loading...
+    <div class="text-center">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
   </div>
   <table v-else class="table">
     <thead>

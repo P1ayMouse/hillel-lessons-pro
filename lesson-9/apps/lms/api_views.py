@@ -17,7 +17,7 @@ class StudentFilter(filters.FilterSet):
 class StudentListCreateView(ListCreateAPIView):
     serializer_class = StudentSerializer
     filterset_class = StudentFilter
-    search_fields = ['name',]
+    search_fields = ['name', ]
 
     def get_queryset(self):
         queryset = Student.objects.all()

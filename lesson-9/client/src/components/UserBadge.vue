@@ -1,16 +1,19 @@
 <template>
-  <div v-if="!userLoaded">
+  <div v-if="!userLoaded" style="text-decoration: none; color: black; font-family: Comic Sans MS, sans-serif;">
     Loading...
   </div>
-  <div v-else-if="user !== null" class="dropdown">
+  <div v-else-if="user !== null" class="dropdown" style="text-decoration: none; color: black; font-family: Comic Sans MS, sans-serif;">
     <a class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-      {{ user.email }}
+      <img src="./icons/account-circle-512.webp" height="30" class="m-2">
+      {{ user.username }}
     </a>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+      <li><a class="dropdown-item" @click="doEditAccount()">Edit Account</a></li>
+      <hr>
       <li><a class="dropdown-item" @click="doLogOut()">Log Out</a></li>
     </ul>
   </div>
-  <div v-else>
+  <div v-else style="text-decoration: none; color: black; font-family: Comic Sans MS, sans-serif;">
     <RouterLink to="/login/"> Log In </RouterLink>
   </div>
 </template>
@@ -70,6 +73,9 @@ export default {
       localStorage.removeItem('lesson-9-refresh')
       this.user = null
       this.$router.push('/login')
+    },
+    doEditAccount() {
+      this.$router.push('/profile')
     }
   }
 }
