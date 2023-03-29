@@ -2,6 +2,7 @@
 
 export default {
   name: "MoviesListForm",
+  //props: ['search'],
   data () {
     return {
       moviesLoaded: false,
@@ -15,12 +16,11 @@ export default {
   },
   async mounted() {
     this.page = 1;
-    await this.loadMovies('/api/v1/movies/movies/');
+    await this.loadMovies();
   },
   methods: {
     async loadMovies(url) {
       this.moviesLoaded = false
-
       const response_movies = await fetch(`/api/v1/movies/movies/?limit=${this.limit}&offset=${(this.page-1) * this.limit}&search=${this.search}`, {
         headers: {
           'Content-Type': 'application/json'

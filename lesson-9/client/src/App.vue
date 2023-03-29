@@ -6,8 +6,6 @@ import UserBadge from "./components/UserBadge.vue";
 
 <script >
 
-import router from "./router";
-
 export default {
   name: "App",
   data () {
@@ -17,7 +15,8 @@ export default {
   },
   methods: {
     onMovieSearch() {
-      router.push({name: 'movies', params: {search: this.search}})
+      console.log(this.search)
+      this.$router.push({name: 'movies', params: {search: this.search}})
     }
   }
 }
@@ -35,9 +34,8 @@ export default {
         </div>
         <!-- Search form -->
         <div class="collapse navbar-collapse">
-          <form class="input-group w-auto d-flex align-items-center justify-content-center" @submit="onMovieSearch">
+          <form class="input-group w-auto d-flex align-items-center justify-content-center" @sumbit="onMovieSearch">
             <input
-                type="search"
                 class="form-control"
                 placeholder="Search"
                 aria-label="Search"
@@ -46,7 +44,7 @@ export default {
 
             <button
                 class="btn btn-outline-secondary"
-                type="button"
+                type="submit"
                 data-mdb-ripple-color="dark"
             >
               Submit
