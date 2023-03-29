@@ -1,7 +1,6 @@
 <script>
 export default {
   name: 'PersonForm',
-  props: ['id'],
   data () {
     return {
       personLoaded: false,
@@ -43,7 +42,8 @@ export default {
       <div class="m-4">
         <h4> {{ person.name }} </h4>
         <span style="font-size: 12px;" v-if="person.birth_year !== null"> {{ person.birth_year ? person.birth_year.slice(0, 4) : '' }}  </span>
-        <span v-if="(person.death_year && person.birth_year) !== null"> - {{ person.death_year.slice(0, 4) }} </span>
+        <span style="font-size: 12px;" v-else>No year</span>
+        <span style="font-size: 12px;" v-if="(person.death_year && person.birth_year) !== null"> - {{ person.death_year.slice(0, 4) }} </span>
       </div>
     </div>
   </div>

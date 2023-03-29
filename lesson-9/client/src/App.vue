@@ -1,10 +1,12 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
-
 import UserBadge from "./components/UserBadge.vue";
+
 </script>
 
 <script >
+
+import router from "./router";
 
 export default {
   name: "App",
@@ -15,8 +17,8 @@ export default {
   },
   methods: {
     onMovieSearch() {
-      console.log(this.search)
-      this.$router.push({name: 'movies', params: {search: this.search}})
+      router.push({name: 'movies-search', params: {search: this.search}})
+      this.search = ''
     }
   }
 }
@@ -33,12 +35,12 @@ export default {
           <a href="/movies/" style="color: black; text-decoration: none; font-size: 24px"> Ithillel IMDB </a>
         </div>
         <!-- Search form -->
-        <div class="collapse navbar-collapse">
-          <form class="input-group w-auto d-flex align-items-center justify-content-center" @sumbit="onMovieSearch">
+        <div class="navbar-collapse" style="align-items: center">
+          <form class="input-group w-auto d-flex">
             <input
                 class="form-control"
                 placeholder="Search"
-                aria-label="Search"
+                type="text"
                 v-model="search"
             />
 
@@ -46,6 +48,7 @@ export default {
                 class="btn btn-outline-secondary"
                 type="submit"
                 data-mdb-ripple-color="dark"
+                @click="onMovieSearch"
             >
               Submit
             </button>

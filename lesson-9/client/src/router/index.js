@@ -30,10 +30,15 @@ const router = createRouter({
       component: ForgotPasswordView
     },
     {
+      path: '/movies/:search',
+      name: 'movies-search',
+      component: MoviesListView,
+      props: true
+    },
+    {
       path: '/movies/',
       name: 'movies',
       component: MoviesListView,
-      props: true
     },
     {
       path: '/profile/',
@@ -41,7 +46,7 @@ const router = createRouter({
       component: ProfileView
     },
     {
-      path: '/movies/:id',
+      path: '/movies/movie/:id',
       name: 'movie',
       component: MovieView,
       props: true
