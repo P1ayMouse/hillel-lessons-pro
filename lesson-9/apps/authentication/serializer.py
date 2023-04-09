@@ -30,6 +30,8 @@ class RegistrationUserSerializer(serializers.ModelSerializer):
         password2 = self.validated_data['password2']
         if password2 != password:
             raise serializers.ValidationError({'detail': 'Password mismatch'})
+        elif len(password) < 6:
+            raise serializers.ValidationError({'detail': 'Password is too small'})
 
         username = self.validated_data['username']
         if len(username) < 6:
@@ -39,6 +41,32 @@ class RegistrationUserSerializer(serializers.ModelSerializer):
         return user
 
 
-
-
-
+# class UpdateUserSerializer(serializers.ModelSerializer):
+#     password = serializers.CharField(write_only=True)
+#     password2 = serializers.CharField(write_only=True)
+#
+#     class Meta:
+#         model = User
+#         fields = ['email', 'password', 'password2', 'username']
+#         read_only_fields = ['email', ]
+#
+#     def update(self, instance, validated_data):
+#         password = validated_data.get('password')
+#         password2 = validated_data.get('password2')
+#         email = validated_data.get('email')
+#         username = validated_data.get('username')
+#
+#         if password != password2:
+#             raise serializers.ValidationError({'detail': 'Password mismatch'})
+#         elif len(password) < 6:
+#             raise serializers.ValidationError({'detail': 'Password is too small'})
+#         elif email != instance.email:
+#             raise serializers.ValidationError({'detail': 'Email mismatch'})
+#         elif username != instance.username:
+#             raise serializers.ValidationError({'detail': 'Username mismatch'})
+#         else:
+#             instance.email = email
+#             instance.username = username
+#             instance.set_password(password)
+#             instance.save()
+#             return instance

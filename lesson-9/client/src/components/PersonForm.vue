@@ -41,9 +41,8 @@ export default {
       <img src="./icons/none_image.png" class="card-img-top m-3 " style="width:300px;">
       <div class="m-4">
         <h4> {{ person.name }} </h4>
-        <span style="font-size: 12px;" v-if="person.birth_year !== null"> {{ person.birth_year ? person.birth_year.slice(0, 4) : '' }}  </span>
-        <span style="font-size: 12px;" v-else>No year</span>
-        <span style="font-size: 12px;" v-if="(person.death_year && person.birth_year) !== null"> - {{ person.death_year.slice(0, 4) }} </span>
+        <span style="font-size: 12px;" v-if="person.birth_year"> {{ person.birth_year ? person.birth_year.slice(0, 4) : '' }}  </span>
+        <span style="font-size: 12px;" v-if="person.death_year && person.birth_year"> - {{ person.death_year.slice(0, 4) }} </span>
       </div>
     </div>
   </div>

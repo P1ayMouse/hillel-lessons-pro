@@ -32,3 +32,9 @@ class PersonMovie(models.Model):
     category = models.CharField(_('Category'), max_length=255)
     job = models.CharField(_('Job'), max_length=255)
     characters = ArrayField(models.CharField(_('Characters'), max_length=255))
+
+
+class Rating(models.Model):
+    movie_id = models.ForeignKey(Movie, on_delete=models.PROTECT)
+    average_rating = models.FloatField(_('Rating'))
+    num_votes = models.IntegerField(_('Num votes'))

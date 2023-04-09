@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "bootstrap": "^5.2.3",
-    "v-pagination-3": "^0.1.7",
     "vue": "^3.2.47",
-    "vue-router": "^4.1.6"
+    "vue-router": "^4.1.6",
+    "vue-star-rating": "^2.1.0"
   },
   "devDependencies": {
     "@rushstack/eslint-patch": "^1.2.0",

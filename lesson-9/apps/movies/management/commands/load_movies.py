@@ -2,7 +2,7 @@ import csv
 
 from django.core.management import BaseCommand
 
-from apps.movies.models import Movie
+from apps.movies.models import Movie, Rating
 
 
 class Command(BaseCommand):
@@ -29,7 +29,15 @@ class Command(BaseCommand):
                     continue
 
                 movie, created = Movie.objects.get_or_create(imdb_id=row_data['imdb_id'], defaults=row_data)
-                if not created:
-                    Movie.objects.filter(id=movie.id).update(**row_data)
 
+                rating_row_data = {
+                    'movie_id': movie,
+                    'average_rating': 0,
+                    'num_votes': 0,
+                }
+
+                rating_check = Rating.objects.filter(movie_id=movie.id)
+                if not rating_check:
+                    Rating.objects.create(**rating_row_data)
+                    print(rating_row_data)
                 print(row_data)

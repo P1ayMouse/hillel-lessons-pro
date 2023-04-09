@@ -5,29 +5,24 @@ export default {
   data () {
     return {
       moviesLoaded: false,
+      personsLoaded: false,
       count: 0,
-      page: 0,
+      page: 1,
       limit: 18,
       movies: [],
       search: '',
+      directors: []
     }
   },
   async mounted() {
-    this.page = 1;
     await this.loadMovies();
   },
+
   methods: {
     async loadMovies() {
       this.moviesLoaded = false
 
-      if (this.$route.params.search === undefined)
-      {
-        this.search = ''
-      }
-      else
-      {
-        this.search = this.$route.params.search
-      }
+      this.search = this.$route.params.search ? this.$route.params.search : ''
 
       const response_movies = await fetch(`/api/v1/movies/movies/?limit=${this.limit}&offset=${(this.page-1) * this.limit}&search=${this.search}`, {
         headers: {
@@ -40,8 +35,9 @@ export default {
         this.movies = response_movies_Data.results
         this.count = response_movies_Data.count
       }
+
       this.moviesLoaded = true
-    }
+    },
   },
   computed: {
     totalPages() {
@@ -61,18 +57,23 @@ export default {
         </div>
       </div>
     </div>
-    <div v-else >
-      <div class="row row-cols-1 row-cols-md-6 g-4 mx-1">
+    <div v-else class="m-4">
+      <div class="row row-cols-3 row-cols-md-6 g-4">
         <div v-for="(movie, index) in movies">
-          <div class="card">
+          <div class="card h-100">
             <router-link :to="{name: 'movie', params: {id: movie.id}}" style="text-decoration: none; color: black">
-            <div class="card-body " style="line-height: 0.5;">
-              <img src="./icons/none_image.png" class="card-img-top mb-2" :alt="`${ movie.name }`">
-              <h5 class="card-title" style="font-weight: bold; font-size: 18px;">{{ movie.name }}</h5>
-              <h6 v-if="movie.year !== null" class="card-text" style="font-size: 12px;"> {{ movie.year.substring(0, 4) }}, </h6>
-              <p v-else class="card-text" style="font-size: 12px;"> No year </p>
-              <div class="">
-                <span class="badge rounded-pill text-bg-secondary m-1" v-if="movie.genres !== []" v-for="(genre, index) in movie.genres"> {{ genre }} </span>
+            <div class="card-body">
+              <img src="./icons/none_image.png" class="card-img-top mb-2">
+              <div class="ms-2">
+                <p class="card-title mb-0" style="font-weight: bold; font-size: 18px;">{{ movie.name }}</p>
+                <div class="card-text mt-1" style="font-size: 12px">
+                  <span v-if="movie.year" class="">{{ movie.year.substring(0, 4) }}</span>
+                  <span v-if="movie.year && movie.directors.length !== 0">, </span>
+                  <span v-for="(director, index) in movie.directors">{{director}}{{index === movie.directors.length - 1 ? '' : ', '}}</span>
+                </div>
+              </div>
+              <div>
+                <span class="badge rounded-pill text-bg-secondary mt-2 m-1" v-for="(genre, index) in movie.genres"> {{ genre }} </span>
               </div>
             </div>
             </router-link>
@@ -81,7 +82,7 @@ export default {
       </div>
 
       <br><br>
-      <nav aria-label="Page navigation" v-if="count !== 0">
+      <nav aria-label="Page navigation" v-if="totalPages > 1">
         <div class="d-flex justify-content-center">
           <ul class="pagination">
             <li class="page-item" :class="{disabled: page === 1}">
